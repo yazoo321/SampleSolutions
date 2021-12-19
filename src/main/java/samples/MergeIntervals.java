@@ -1,51 +1,68 @@
 package samples;
 
+import java.util.*;
+
 public class MergeIntervals {
-    private int[][] uniqueIntervals;
-    private int itemsAdded = 0;
+    private LinkedList<List<Integer>> uniqueIntervals = new LinkedList<>();
 
     public int[][] merge(int[][] intervals) {
         if (intervals == null) {
             return new int[0][0];
         }
-        uniqueIntervals = new int[intervals.length][2];
 
         for (int[] interval : intervals) {
-            checkOverlap(interval);
+            checkOverlap(new ArrayList<>(List.of(interval[0], interval[1])));
         }
 
-        return uniqueIntervals;
+        return prepareResponse();
     }
 
-    private void checkOverlap(int[] current) {
-        for (int i = 0; i < itemsAdded; i++) {
-            int[] interval = uniqueIntervals[i];
+    private void checkOverlap(List<Integer> current) {
+        Iterator<List<Integer>> i = uniqueIntervals.iterator();
+        while (i.hasNext()) {
+            List<Integer> interval = i.next();
+            if (requiresCombining(interval, current)) {
+                current.set(0, Math.min(current.get(0), interval.get(0)));
+                current.set(1, Math.max(current.get(1), interval.get(1)));
 
-            if (overlapOnLeft(interval, current)) {
-                interval[1] = current[1];
-                break;
-            }
-            if (overlapOnRight(interval, current)) {
-                interval[0] = current[0];
-                break;
+                i.remove();
             }
         }
 
-        // no overlap, this is a unique entry, add
-        addEntry(current);
+        uniqueIntervals.add(current);
     }
 
-    private boolean overlapOnLeft(int[] interval, int[] current) {
-        return current[0] >= interval[0] && current[1] <= interval[1];
+    private boolean requiresCombining(List<Integer> interval, List<Integer> current) {
+        return overlapOnLeft(interval, current)
+                || overlapOnRight(interval, current)
+                || encapsulatesInterval(interval, current);
     }
 
-    private boolean overlapOnRight(int[] interval, int[] current) {
-        return current[0] <= interval[0] && current[1] >= interval[1];
+    private boolean overlapOnLeft(List<Integer> interval, List<Integer> current) {
+        return interval.get(0) <= current.get(0) && current.get(0) <= interval.get(1);
     }
 
-    private void addEntry(int[] interval) {
-        uniqueIntervals[itemsAdded] = interval;
-        itemsAdded++;
+    private boolean overlapOnRight(List<Integer> interval, List<Integer> current) {
+        return interval.get(1) >= current.get(1) && current.get(1) >= interval.get(0);
     }
 
+    private boolean encapsulatesInterval(List<Integer> interval, List<Integer> current) {
+        return current.get(0) <= interval.get(0) && current.get(1) >= interval.get(1);
+    }
+
+
+    private int[][] prepareResponse() {
+        int[][] responseObject = new int[uniqueIntervals.size()][2];
+        for (int i = 0; i < uniqueIntervals.size(); i++) {
+            List<Integer> ui = uniqueIntervals.get(i);
+
+            int[] interval = new int[2];
+            interval[0] = ui.get(0);
+            interval[1] = ui.get(1);
+
+            responseObject[i] = interval;
+        }
+
+        return responseObject;
+    }
 }

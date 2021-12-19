@@ -1,2 +1,0 @@
-samples/MergeIntervals.java
- samples.MergeIntervals
