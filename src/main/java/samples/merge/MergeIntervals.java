@@ -1,5 +1,5 @@
-package samples;
-
+package samples.merge;
+// Example question 56 from Leetcode
 import java.util.*;
 
 public class MergeIntervals {

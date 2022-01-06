@@ -1,4 +1,4 @@
-package samples;
+package samples.merge;
 
 import org.junit.jupiter.api.Test;
 
