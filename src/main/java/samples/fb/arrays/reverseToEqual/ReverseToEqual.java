@@ -1,4 +1,4 @@
-package samples.reverseToEqual;
+package samples.fb.arrays.reverseToEqual;
 // Reverse to Make Equal - Leetcode 1460
 // You are given two integer arrays of equal length target and arr. In one step, you can select any non-empty sub-array of arr and reverse it. You are allowed to make any number of steps.
 //

@@ -1,4 +1,4 @@
-package samples.passingYearbooks;
+package samples.fb.arrays.passingYearbooks;
 
 
 // There are n students, numbered from 1 to n, each with their own yearbook. They would like to pass their yearbooks around and get them signed by other students.
@@ -31,9 +31,6 @@ package samples.passingYearbooks;
 //Pass 2:
 //Both students now hold their own yearbook, so the process is complete.
 //Each student received 1 signature.
-
-import java.util.LinkedList;
-import java.util.Stack;
 
 public class PassingYearbooks {
 

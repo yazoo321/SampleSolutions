@@ -1,4 +1,4 @@
-package samples.rotationalCipher;
+package samples.fb.strings.rotationalCipher;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

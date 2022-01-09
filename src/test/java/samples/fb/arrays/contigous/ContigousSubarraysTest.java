@@ -1,4 +1,4 @@
-package samples.contigous;
+package samples.fb.arrays.contigous;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

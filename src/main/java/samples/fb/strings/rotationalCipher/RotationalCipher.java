@@ -1,4 +1,4 @@
-package samples.rotationalCipher;
+package samples.fb.strings.rotationalCipher;
 
 import java.util.HashMap;
 

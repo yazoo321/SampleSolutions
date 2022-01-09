@@ -1,8 +1,7 @@
-package samples.passingYearbooks;
+package samples.fb.arrays.passingYearbooks;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import samples.reverseToEqual.ReverseToEqual;
 
 public class passingYearbooksTest {
 
