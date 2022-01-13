@@ -1,4 +1,4 @@
-package samples.fb.mixed.pairSums;
+package samples.fb.hashTables.pairSums;
 
 // Pair Sums
 // Given a list of n integers arr[0..(n-1)], determine the number of different pairs of elements within it which sum to k.

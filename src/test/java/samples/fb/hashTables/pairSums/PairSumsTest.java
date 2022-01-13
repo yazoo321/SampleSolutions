@@ -1,4 +1,4 @@
-package samples.fb.mixed.pairSums;
+package samples.fb.hashTables.pairSums;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
