@@ -11,7 +11,6 @@ public class NodesInSubtree {
         int[] res = new int[queries.size()];
 
         for (int i=0; i<queries.size();i++) {
-            int letterCnt = 0;
             Node n = root;
             Query q = queries.get(i);
 
