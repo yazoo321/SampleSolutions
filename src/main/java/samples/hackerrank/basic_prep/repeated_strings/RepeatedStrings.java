@@ -1,5 +1,8 @@
 package samples.hackerrank.basic_prep.repeated_strings;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 //There is a string, s, of lowercase English letters that is repeated infinitely many times. Given an integer, , find and print the number of letter a's in the first  letters of the infinite string.
 //
 //Example
@@ -50,5 +53,28 @@ public class RepeatedStrings {
     public static long repeatedString(String s, long n) {
         // Write your code here
 
+        if (s == null || s.isEmpty()) {
+            return -1;
+        }
+
+        long length = s.length();
+        long times = n / length;
+        long remainder = n % length;
+
+        // count number of a's
+        long extras = 0;
+        long baseCount = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char a = s.charAt(i);
+
+            if (a == 'a') {
+                baseCount++;
+                if (i < remainder) {
+                    extras++;
+                }
+            }
+        }
+
+        return (times * baseCount) + extras;
     }
 }
